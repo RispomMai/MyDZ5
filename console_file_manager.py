@@ -28,15 +28,15 @@ while True:
         del_dir_file()
     elif choice == '3':
         pass
-        list_dir()
+        file_copy()
     elif choice == '4':
         list_dir()
         pass
     elif choice == '5':
-        list_only_dirs()
+        list_dir('dir')
         pass
     elif choice == '6':
-        list_only_files()
+        list_dir('file')
         pass
     elif choice == '7':
         print('\n\nОперационная система : ',(sys.platform))
