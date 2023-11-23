@@ -24,20 +24,25 @@ while True:
         pass
         add_dir()
     elif choice == '2':
-        pass
-        del_dir_file()
+        file_name = input('Введите имя папки или файла для удаления')
+        if del_dir_file(file_name) == False:
+            print('Нет такого файла/папки или папка не пустая: ', file_name)
+
     elif choice == '3':
         pass
         file_copy()
     elif choice == '4':
-        list_dir()
-        pass
+        print("\033c", end="")
+        for i in list_dir():
+            print(i)
     elif choice == '5':
-        list_dir('dir')
-        pass
+        print("\033c", end="")
+        for i in list_dir('dir'):
+            print(i)
     elif choice == '6':
-        list_dir('file')
-        pass
+        print("\033c", end="")
+        for i in list_dir('file'):
+            print(i)
     elif choice == '7':
         print('\n\nОперационная система : ',(sys.platform))
         pass
@@ -52,7 +57,9 @@ while True:
         game_count()
         pass
     elif choice == '11':
-        change_dir()
+        path_name = input('Введите новый рабочий каталог')
+        if change_dir(path_name) == False:
+            print('Такого каталога не существует :', path_name)
         pass
     elif choice == '12':
         break

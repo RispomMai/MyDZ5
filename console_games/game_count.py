@@ -1,5 +1,6 @@
-def add_count(count):
-    count += int(input('Введите сумму на которую хотите пополнить счет :'))
+def add_count(count,add_count):
+    count += add_count
+        # int(input('Введите сумму на которую хотите пополнить счет :')))
     return(count)
 
 def pay_count(count,history_pay):
@@ -30,7 +31,7 @@ def game_count():
         choice = input('Выберите пункт меню ')
         if choice == '1':
             pass
-            my_count = add_count(my_count)
+            my_count = add_count(my_count,int(input('Введите сумму на которую хотите пополнить счет :')))
         elif choice == '2':
             pass
             my_count = pay_count(my_count,history)

@@ -6,35 +6,39 @@ import shutil
 def add_dir():
     os.mkdir(input('Введите имя создаваемой папки'))
 
-def del_dir_file():
-    file_name = input('Введите имя папки или файла для удаления')
+def del_dir_file(file_name):
+    #file_name = input('Введите имя папки или файла для удаления')
     if os.path.isfile(file_name) :
         os.remove(file_name)
+        return True
     else:
-        if os.path.isdir(file_name) :
-            os.rmdir(file_name)
+        if os.path.isdir(file_name):
+            if len(os.listdir(file_name)) == 0:
+                os.rmdir(file_name)
+            return True
         else:
-            print('Нет такого фала/папки : ',file_name)
+            return False
 
 def list_dir(view="All"):
-    print("\033c", end="")
+    str_view = []
     for root, directories, files in os.walk(os.getcwd()):
         if view == 'All':
-            print(root)
+            str_view.append(root)
         elif view == 'dir':
             for directory in directories:
-                print(directory)
+                str_view.append(directory)
         else:
             for file in files:
-                print(file)
-    return
+                str_view.append(file)
+    return(str_view)
 
-def change_dir():
-    path_name = input('Введите новый рабочий каталог')
+def change_dir(path_name):
     if os.path.exists(path_name) :
         os.chdir(path_name)
+        return True
     else:
-        print('Такого каталога не существует :',path_name )
+        return False
+
 
 def file_copy():
     copy_path = os.getcwd()
