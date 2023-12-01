@@ -2,6 +2,7 @@ import os
 import sys
 import shutil
 
+FILENAME_FOR_LISTDIR = 'listdir.txt '
 
 def add_dir():
     os.mkdir(input('Введите имя создаваемой папки'))
@@ -18,6 +19,22 @@ def del_dir_file(file_name):
             return True
         else:
             return False
+
+def listdirfile():
+    with open(FILENAME_FOR_LISTDIR, 'w') as f:
+        tree = list(os.walk(os.getcwd()))
+        f.write('files: ')
+        for file in tree[0][2]:
+            f.write(file)
+            f.write(',')
+        f.write('\n\n')
+        f.write('dirs: ')
+        for dir in tree[0][1]:
+            f.write(dir)
+            f.write(',')
+
+
+
 
 def list_dir(view="All"):
     str_view = []

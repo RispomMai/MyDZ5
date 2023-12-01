@@ -1,4 +1,5 @@
 
+
 from functions_file_manager import *
 sys.path.append('/console_games')
 from console_games.game_count import *
@@ -17,7 +18,8 @@ while True:
     '9. Играть в викторину',
     '10. Мой банковский счет')
     print('11. Сменить рабочую директорию',
-    '12. выход')
+    '12. Сохранить содержимое рабочей директории в файл',
+    '13. выход')
 
     choice = input('Выберите пункт меню ')
     if choice == '1':
@@ -62,6 +64,11 @@ while True:
             print('Такого каталога не существует :', path_name)
         pass
     elif choice == '12':
+        listdirfile()
+        print('\nСодержимое рабочей директории сохранено в файле listdir.txt\n')
+        pass
+    elif choice == '13':
+
         break
     else:
         print('Неверный пункт меню')
