@@ -1,7 +1,17 @@
 from functions_file_manager import *
 from console_games.game_count import *
 from console_games.game_victorina import *
+def test_read_write_count():
+    write_count('test.bin',999)
+    assert read_count('test.bin') == 999
+    write_count('test.bin', 0)
+    assert read_count('test.bin') == 0
+    os.remove('test.bin')
 
+def test_read_write_history():
+    write_history('test1.txt', ('90','90','90'))
+    assert read_history('test1.txt') == ['90','90','90']
+    os.remove('test1.txt')
 
 def test_add_count():
     assert add_count(300,500) == 800
@@ -35,11 +45,3 @@ def test_del_dir_file():
 
 
 
-"""
-  assert list(list_dir('file')) == []
-    file = os.open('test.txt', os.O_CREAT)
-    os.close(file)
-    assert list(list_dir('file')) == ['test.txt']
-    os.chdir('..')
-    shutil.rmtree('testdir')
- """
