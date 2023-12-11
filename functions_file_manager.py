@@ -5,13 +5,24 @@ import shutil
 FILENAME_FOR_LISTDIR = 'listdir.txt '
 
 def add_dir():
-    os.mkdir(input('Введите имя создаваемой папки'))
+    try:
+        os.mkdir(input('Введите имя создаваемой папки'))
+    except FileNotFoundError:
+        print("Путь не найден")
+    except FileExistsError:
+        print("Папка уже существует")
+    except PermissionError:
+        print("Нет доступа для создания папки")
+
 
 def del_dir_file(file_name):
     #file_name = input('Введите имя папки или файла для удаления')
     if os.path.isfile(file_name) :
-        os.remove(file_name)
-        return True
+        try:
+            os.remove(file_name)
+            return True
+        except OSError:
+            print("Нет доступа или попытка удалить папку")
     else:
         if os.path.isdir(file_name):
             if len(os.listdir(file_name)) == 0:

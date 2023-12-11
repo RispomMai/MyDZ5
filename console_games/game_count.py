@@ -34,22 +34,33 @@ def write_history(filename,history):
                 f.write(i)
                 f.write(';')
 
-def add_count(count,add_count):
-    count += add_count
-        # int(input('Введите сумму на которую хотите пополнить счет :')))
-    return(count)
+def add_count(count):
+    while True:
+        try:
+            count += int(input('Введите сумму на которую хотите пополнить счет :'))
+            return(count)
+        except:
+            print("Некорректное значение")
+        ###vcount += add_count
+            # int(input('Введите сумму на которую хотите пополнить счет :')))
+        ### return(count)
 
 def pay_count(count,history_pay):
-    pokupka = int(input('Введите сумму покупки :'))
+    while True:
+        try:
+            pokupka = int(input('Введите сумму покупки :'))
+            break
+        except:
+            print("Некорректное значение")
+    ###pokupka = int(input('Введите сумму покупки :'))
     if count > pokupka:
         name_pokupka = input('Введите название покупки :')
         history_pay.append(name_pokupka+ ' - '+str(pokupka))
-        return(count - pokupka)
+        ###    return(count - pokupka)
     else:
         print('На счете недостаточно средств')
-        print('История ваших покупок :')
-        return(count)
-
+        ###    return(count)
+    return count-pokupka if count > pokupka else count
 
 def history_count(count,history_pay):
     print('На вашем счетe - ',count)
@@ -71,7 +82,7 @@ def game_count():
         choice = input('Выберите пункт меню ')
         if choice == '1':
             pass
-            my_count = add_count(my_count,int(input('Введите сумму на которую хотите пополнить счет :')))
+            my_count = add_count(my_count)
         elif choice == '2':
             pass
             my_count = pay_count(my_count,history)
